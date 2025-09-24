@@ -1,6 +1,7 @@
 package com.example.test0919.dao;
 
 import com.example.test0919.dto.CreateDataRequest;
+import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Product;
 
 import java.util.List;
@@ -15,5 +16,7 @@ public interface ProductDao {
     public void deleteData(String productName);
 
     public void updateProduct(Integer productId, CreateDataRequest createDataRequest);
+
+    public void createAppUser(AppUser appUser);
 }
 

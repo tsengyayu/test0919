@@ -1,6 +1,7 @@
 package com.example.test0919.service;
 
 import com.example.test0919.dto.CreateDataRequest;
+import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Product;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface ProductService {
     public void deleteData(String productName);
 
     public void updateProduct(Integer productId, CreateDataRequest createDataRequest);
+
+    public void createAppUser(AppUser appUser);
 }

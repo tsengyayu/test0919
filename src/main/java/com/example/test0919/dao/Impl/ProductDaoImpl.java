@@ -2,6 +2,7 @@ package com.example.test0919.dao.Impl;
 
 import com.example.test0919.dao.ProductDao;
 import com.example.test0919.dto.CreateDataRequest;
+import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Product;
 import com.example.test0919.rowMapper.ProductRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -20,6 +22,9 @@ import java.util.Objects;
 public class ProductDaoImpl implements ProductDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<Product> getData() {
@@ -76,5 +81,17 @@ public class ProductDaoImpl implements ProductDao {
         map.put("productPrice", createDataRequest.getPrice());
         map.put("productId", productId);
         namedParameterJdbcTemplate.update(sql, map);
+    }
+
+    @Override
+    public void createAppUser(AppUser appUser) {
+        String sql = "INSERT INTO app_users(username, password, enabled, role) VALUES (:name, :password, :enabled, :role)";
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", appUser.getUsername());
+        map.put("password", passwordEncoder.encode(appUser.getPassword()));
+        map.put("enabled", appUser.isEnabled());
+        map.put("role", appUser.getRole());
+
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map));
     }
 }
