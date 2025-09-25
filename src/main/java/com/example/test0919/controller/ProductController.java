@@ -7,6 +7,8 @@ import com.example.test0919.model.Product;
 import com.example.test0919.service.PersonService;
 import com.example.test0919.service.ProductService;
 import com.example.test0919.util.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private PersonService personService;
+
+    ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/api/getData")
     public ResponseEntity<List<Product>> getData(){
@@ -47,6 +51,7 @@ public class ProductController {
     @DeleteMapping("/api/deleteData/{productName}")
     public ResponseEntity<?> deleteData(@PathVariable String productName){
         productService.deleteData(productName);
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

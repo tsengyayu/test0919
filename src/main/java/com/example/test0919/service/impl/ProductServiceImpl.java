@@ -1,5 +1,6 @@
 package com.example.test0919.service.impl;
 
+import com.example.test0919.aop.Auditable;
 import com.example.test0919.dao.ProductDao;
 import com.example.test0919.dto.CreateDataRequest;
 import com.example.test0919.model.AppUser;
@@ -7,6 +8,7 @@ import com.example.test0919.model.Product;
 import com.example.test0919.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,31 +17,39 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;
 
+    @Auditable(action = "READ", fixedEntityId = "ALL_PRODUCTS")
     @Override
     public List<Product> getData() {
         return productDao.getData();
     }
-
+    @Auditable(action = "READ", idArg = "productId")
     @Override
     public Product getDataById(Integer productId) {
         return productDao.getDataById(productId);
     }
 
+    @Transactional
+    @Auditable(action = "CREATE", idFromReturn = true, loader = "getDataById")
     @Override
     public Integer createData(CreateDataRequest createDataRequest) {
         return productDao.createData(createDataRequest);
     }
 
+    @Transactional
+    @Auditable(action = "DELETE", idArg = "productName", loader = "getDataByName")
     @Override
     public void deleteData(String productName) {
         productDao.deleteData(productName);
     }
 
+    @Transactional
+    @Auditable(action = "UPDATE", idArg = "productId", loader = "getDataById")
     @Override
     public void updateProduct(Integer productId, CreateDataRequest createDataRequest) {
         productDao.updateProduct(productId, createDataRequest);
     }
 
+    @Transactional
     @Override
     public void createAppUser(AppUser appUser) {
         productDao.createAppUser(appUser);
