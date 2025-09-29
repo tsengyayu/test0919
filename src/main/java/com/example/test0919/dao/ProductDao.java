@@ -18,5 +18,7 @@ public interface ProductDao {
     public void updateProduct(Integer productId, CreateDataRequest createDataRequest);
 
     public void createAppUser(AppUser appUser);
+
+    public void deleteDataByLogic(String productName);
 }
 

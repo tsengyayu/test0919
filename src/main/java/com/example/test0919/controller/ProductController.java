@@ -56,6 +56,13 @@ public class ProductController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/api/deleteDataByLogic/{productName}")
+    public ResponseEntity<?> deleteDataByLogic(@PathVariable String productName){
+        productService.deleteDataByLogic(productName);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/api/updateData/{productId}")
     public ResponseEntity<Product> updateData(@PathVariable Integer productId,
                                               @RequestBody CreateDataRequest createDataRequest){

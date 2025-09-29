@@ -28,7 +28,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getData() {
-        String sql = "SELECT id, name, price FROM products";
+        String sql = "SELECT id, name, price FROM products WHERE is_deleted=false";
 //        Map<String, Objects> map = new HashMap<>();
 
         List<Product> productList = namedParameterJdbcTemplate.query(sql, new ProductRowMapper());
@@ -37,7 +37,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product getDataById(Integer productId) {
-        String sql = "SELECT id, name, price FROM products WHERE id=:productId";
+        String sql = "SELECT id, name, price FROM products WHERE id=:productId and is_deleted=false";
         Map<String, Object> map = new HashMap<>();
         map.put("productId", productId);
 
@@ -53,10 +53,11 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Integer createData(CreateDataRequest createDataRequest) {
-        String sql = "INSERT INTO products(name, price) VALUES (:name, :price)";
+        String sql = "INSERT INTO products(name, price, is_deleted) VALUES (:name, :price, :isDeleted)";
         Map<String, Object> map = new HashMap<>();
         map.put("name", createDataRequest.getName());
         map.put("price", createDataRequest.getPrice());
+        map.put("isDeleted", false);
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
@@ -93,5 +94,15 @@ public class ProductDaoImpl implements ProductDao {
         map.put("role", appUser.getRole());
 
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map));
+    }
+
+    @Override
+    public void deleteDataByLogic(String productName) {
+        String sql = "UPDATE products SET is_deleted=:idDeleted " +
+                "WHERE name=:productName";
+        Map<String, Object> map = new HashMap<>();
+        map.put("idDeleted", true);
+        map.put("productName", productName);
+        namedParameterJdbcTemplate.update(sql, map);
     }
 }

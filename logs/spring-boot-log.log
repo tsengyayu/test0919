@@ -1,0 +1,80 @@
+2025-09-29T16:04:50.660+08:00  INFO 2917 --- [0919] [main] com.example.test0919.Application         : Starting Application using Java 22.0.1 with PID 2917 (/Users/zengalier/IdeaProjects/0919/target/classes started by zengalier in /Users/zengalier/IdeaProjects/0919)
+2025-09-29T16:04:50.662+08:00  INFO 2917 --- [0919] [main] com.example.test0919.Application         : No active profile set, falling back to 1 default profile: "default"
+2025-09-29T16:04:51.192+08:00  INFO 2917 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-29T16:04:51.201+08:00  INFO 2917 --- [0919] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-29T16:04:51.202+08:00  INFO 2917 --- [0919] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-29T16:04:51.226+08:00  INFO 2917 --- [0919] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-29T16:04:51.227+08:00  INFO 2917 --- [0919] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 548 ms
+2025-09-29T16:04:51.392+08:00  INFO 2917 --- [0919] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-09-29T16:04:51.697+08:00  INFO 2917 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-09-29T16:04:51.702+08:00  INFO 2917 --- [0919] [main] com.example.test0919.Application         : Started Application in 1.274 seconds (process running for 1.631)
+2025-09-29T16:07:15.911+08:00  INFO 2917 --- [0919] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-29T16:07:15.912+08:00  INFO 2917 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-29T16:07:15.915+08:00  INFO 2917 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-09-29T16:07:15.949+08:00  INFO 2917 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-29T16:07:16.209+08:00  INFO 2917 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58b62d4c
+2025-09-29T16:07:16.210+08:00  INFO 2917 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-29T16:40:27.201+08:00  INFO 2917 --- [0919] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-29T16:40:27.205+08:00  INFO 2917 --- [0919] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-29T16:40:27.212+08:00  INFO 2917 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-29T16:40:27.214+08:00  INFO 2917 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-29T16:40:29.283+08:00  INFO 3168 --- [0919] [main] com.example.test0919.Application         : Starting Application using Java 22.0.1 with PID 3168 (/Users/zengalier/IdeaProjects/0919/target/classes started by zengalier in /Users/zengalier/IdeaProjects/0919)
+2025-09-29T16:40:29.284+08:00  INFO 3168 --- [0919] [main] com.example.test0919.Application         : No active profile set, falling back to 1 default profile: "default"
+2025-09-29T16:40:29.775+08:00  INFO 3168 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-29T16:40:29.782+08:00  INFO 3168 --- [0919] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-29T16:40:29.782+08:00  INFO 3168 --- [0919] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-29T16:40:29.806+08:00  INFO 3168 --- [0919] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-29T16:40:29.806+08:00  INFO 3168 --- [0919] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 502 ms
+2025-09-29T16:40:29.942+08:00  INFO 3168 --- [0919] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-09-29T16:40:30.228+08:00  INFO 3168 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-09-29T16:40:30.233+08:00  INFO 3168 --- [0919] [main] com.example.test0919.Application         : Started Application in 1.196 seconds (process running for 1.476)
+2025-09-29T16:42:44.368+08:00  INFO 3168 --- [0919] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-29T16:42:44.369+08:00  INFO 3168 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-29T16:42:44.373+08:00  INFO 3168 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-09-29T16:42:44.398+08:00  INFO 3168 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-29T16:42:44.554+08:00  INFO 3168 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@41fe9fe7
+2025-09-29T16:42:44.555+08:00  INFO 3168 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-29T16:48:05.832+08:00  INFO 3168 --- [0919] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-29T16:48:05.837+08:00  INFO 3168 --- [0919] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-29T16:48:05.840+08:00  INFO 3168 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-29T16:48:05.846+08:00  INFO 3168 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-29T16:48:07.806+08:00  INFO 3210 --- [0919] [main] com.example.test0919.Application         : Starting Application using Java 22.0.1 with PID 3210 (/Users/zengalier/IdeaProjects/0919/target/classes started by zengalier in /Users/zengalier/IdeaProjects/0919)
+2025-09-29T16:48:07.807+08:00  INFO 3210 --- [0919] [main] com.example.test0919.Application         : No active profile set, falling back to 1 default profile: "default"
+2025-09-29T16:48:08.301+08:00  INFO 3210 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-29T16:48:08.308+08:00  INFO 3210 --- [0919] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-29T16:48:08.308+08:00  INFO 3210 --- [0919] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-29T16:48:08.327+08:00  INFO 3210 --- [0919] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-29T16:48:08.327+08:00  INFO 3210 --- [0919] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 499 ms
+2025-09-29T16:48:08.465+08:00  INFO 3210 --- [0919] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-09-29T16:48:08.757+08:00  INFO 3210 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-09-29T16:48:08.762+08:00  INFO 3210 --- [0919] [main] com.example.test0919.Application         : Started Application in 1.17 seconds (process running for 1.429)
+2025-09-29T16:49:34.200+08:00  INFO 3210 --- [0919] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-29T16:49:34.201+08:00  INFO 3210 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-29T16:49:34.202+08:00  INFO 3210 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-29T16:50:03.363+08:00  INFO 3210 --- [0919] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-29T16:50:03.527+08:00  INFO 3210 --- [0919] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42b918f1
+2025-09-29T16:50:03.528+08:00  INFO 3210 --- [0919] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-29T20:34:18.396+08:00  INFO 3210 --- [0919] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-29T20:34:18.403+08:00  INFO 3210 --- [0919] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-29T20:34:18.408+08:00  INFO 3210 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-29T20:34:18.413+08:00  INFO 3210 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-29T20:34:20.715+08:00  INFO 4342 --- [0919] [main] com.example.test0919.Application         : Starting Application using Java 22.0.1 with PID 4342 (/Users/zengalier/IdeaProjects/0919/target/classes started by zengalier in /Users/zengalier/IdeaProjects/0919)
+2025-09-29T20:34:20.715+08:00  INFO 4342 --- [0919] [main] com.example.test0919.Application         : No active profile set, falling back to 1 default profile: "default"
+2025-09-29T20:34:21.279+08:00  INFO 4342 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-29T20:34:21.294+08:00  INFO 4342 --- [0919] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-29T20:34:21.294+08:00  INFO 4342 --- [0919] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-29T20:34:21.318+08:00  INFO 4342 --- [0919] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-29T20:34:21.318+08:00  INFO 4342 --- [0919] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 583 ms
+2025-09-29T20:34:21.454+08:00  INFO 4342 --- [0919] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-09-29T20:34:21.752+08:00  INFO 4342 --- [0919] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-09-29T20:34:21.757+08:00  INFO 4342 --- [0919] [main] com.example.test0919.Application         : Started Application in 1.293 seconds (process running for 1.627)
+2025-09-29T20:44:26.186+08:00  INFO 4342 --- [0919] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-29T20:44:26.187+08:00  INFO 4342 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-29T20:44:26.191+08:00  INFO 4342 --- [0919] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2025-09-29T20:44:26.218+08:00  INFO 4342 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-29T20:44:26.420+08:00  INFO 4342 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@247d78cc
+2025-09-29T20:44:26.421+08:00  INFO 4342 --- [0919] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-29T20:45:02.928+08:00  INFO 4342 --- [0919] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-29T20:45:02.935+08:00  INFO 4342 --- [0919] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-29T20:45:02.940+08:00  INFO 4342 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-29T20:45:02.943+08:00  INFO 4342 --- [0919] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
