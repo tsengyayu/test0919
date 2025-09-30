@@ -1,0 +1,48 @@
+<configuration scan="true" scanPeriod="60 seconds">
+    <!-- 共同的 JSON 編碼設定 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp fieldName="@timestamp"/>
+                <logLevel/>
+                <threadName/>
+                <loggerName/>
+                <message/>
+                <mdc/>          <!-- 放 correlationId/traceId/userId 等 -->
+                <stackTrace/>
+                <globalCustomFields>{"application":"my-svc","env":"dev"}</globalCustomFields>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- 檔案輸出 + 日期/大小輪轉 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.json.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每日新檔，且單檔達 50MB 會切段；壓縮保留 -->
+            <fileNamePattern>logs/app.%d{yyyy-MM-dd}.%i.json.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>14</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/><logLevel/><threadName/><loggerName/><message/><mdc/><stackTrace/>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- 常見 noisy logger 降噪 -->
+    <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.zalando.logbook" level="INFO"/>
+    <logger name="org.apache.catalina" level="WARN"/>
+    <logger name="org.hibernate.SQL" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
