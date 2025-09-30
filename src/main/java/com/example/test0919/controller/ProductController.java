@@ -1,6 +1,7 @@
 package com.example.test0919.controller;
 
 import com.example.test0919.dto.CreateDataRequest;
+import com.example.test0919.error.NotFoundException;
 import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Person;
 import com.example.test0919.model.Product;
@@ -43,7 +44,7 @@ public class ProductController {
     @PostMapping("/api/createData")
     public ResponseEntity<Product> createData(@RequestBody CreateDataRequest createDataRequest){
         Integer productId = productService.createData(createDataRequest);
-        Product product = productService.getDataById(productId);
+        Product product = productService.getDataByIdDao(productId);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
@@ -66,12 +67,9 @@ public class ProductController {
     @PutMapping("/api/updateData/{productId}")
     public ResponseEntity<Product> updateData(@PathVariable Integer productId,
                                               @RequestBody CreateDataRequest createDataRequest){
-        Product product = productService.getDataById(productId);
-        if(product == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+//        Product product = productService.getDataByIdDao(productId);
         productService.updateProduct(productId, createDataRequest);
-        Product updateProduct = productService.getDataById(productId);
+        Product updateProduct = productService.getDataByIdDao(productId);
         return ResponseEntity.status(HttpStatus.OK).body(updateProduct);
     }
 

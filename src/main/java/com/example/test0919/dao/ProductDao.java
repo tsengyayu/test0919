@@ -11,6 +11,8 @@ public interface ProductDao {
 
     public Product getDataById(Integer productId);
 
+    public Product getDataByIdDao(Integer productId);
+
     public Integer createData(CreateDataRequest createDataRequest);
 
     public void deleteData(String productName);
@@ -20,5 +22,7 @@ public interface ProductDao {
     public void createAppUser(AppUser appUser);
 
     public void deleteDataByLogic(String productName);
+
+    public Product getDataByName(String productName);
 }
 

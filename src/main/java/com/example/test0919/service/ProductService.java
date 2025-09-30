@@ -12,6 +12,10 @@ public interface ProductService {
 
     public Product getDataById(Integer productId);
 
+    public Product getDataByIdDao(Integer productId);
+
+    public Product getDataByName(String productName);
+
     public  Integer createData(CreateDataRequest createDataRequest);
 
     public void deleteData(String productName);

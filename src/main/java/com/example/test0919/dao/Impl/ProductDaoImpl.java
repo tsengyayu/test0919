@@ -52,6 +52,36 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
+    public Product getDataByIdDao(Integer productId) {
+        String sql = "SELECT id, name, price FROM products WHERE id=:productId and is_deleted=false";
+        Map<String, Object> map = new HashMap<>();
+        map.put("productId", productId);
+
+        List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
+
+        if(productList.size() > 0){
+            return productList.get(0);
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public Product getDataByName(String productName) {
+        String sql = "SELECT id, name, price FROM products WHERE name=:productName and is_deleted=false";
+        Map<String, Object> map = new HashMap<>();
+        map.put("productName", productName);
+        List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
+        if(productList.size() > 0){
+            return productList.get(0);
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
     public Integer createData(CreateDataRequest createDataRequest) {
         String sql = "INSERT INTO products(name, price, is_deleted) VALUES (:name, :price, :isDeleted)";
         Map<String, Object> map = new HashMap<>();
