@@ -5,9 +5,13 @@ import com.example.test0919.dto.CreateDataRequest;
 import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Product;
 import com.example.test0919.rowMapper.ProductRowMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +29,8 @@ public class ProductDaoImpl implements ProductDao {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public List<Product> getData() {
@@ -134,5 +140,24 @@ public class ProductDaoImpl implements ProductDao {
         map.put("idDeleted", true);
         map.put("productName", productName);
         namedParameterJdbcTemplate.update(sql, map);
+    }
+
+    @Override
+    public Map<String, Object> batchInsert(List<Map<String, Object>> createDataRequestsList) throws JsonProcessingException {
+        String sql = "INSERT INTO products1 (name, price) VALUES (:productName,:price)";
+        int successCount = 0;
+        for (Map<String, Object> item : createDataRequestsList) {
+            Map<String, Object> param = new HashMap<>();
+            param.put("productName", item.get("productName"));
+            String priceJson = objectMapper.writeValueAsString(item.get("price"));
+            param.put("price", priceJson);
+            namedParameterJdbcTemplate.update(sql, param);
+            successCount++;
+        }
+
+        return Map.of(
+                "insertedCount", successCount,
+                "status", "success"
+        );
     }
 }

@@ -8,11 +8,17 @@ import com.example.test0919.error.NotFoundException;
 import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Product;
 import com.example.test0919.service.ProductService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class ProductServiceImpl implements ProductService {
@@ -77,5 +83,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteDataByLogic(String productName) {
         productDao.deleteDataByLogic(productName);
+    }
+
+    @Override
+    public Map<String, Object> batchInsert(MultipartFile file) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        InputStream inputStream = file.getInputStream();
+        List<Map<String, Object>> productList = mapper.readValue(
+                inputStream, new TypeReference<List<Map<String, Object>>>() {}
+        );
+        return productDao.batchInsert(productList);
     }
 }
