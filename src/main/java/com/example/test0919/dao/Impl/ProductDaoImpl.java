@@ -144,11 +144,12 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Map<String, Object> batchInsert(List<Map<String, Object>> createDataRequestsList) throws JsonProcessingException {
-        String sql = "INSERT INTO products1 (name, price) VALUES (:productName,:price)";
+        String sql = "INSERT INTO products1 (name, price, description) VALUES (:productName,:price, :description)";
         int successCount = 0;
         for (Map<String, Object> item : createDataRequestsList) {
             Map<String, Object> param = new HashMap<>();
             param.put("productName", item.get("productName"));
+            param.put("description", item.get("description"));
             String priceJson = objectMapper.writeValueAsString(item.get("price"));
             param.put("price", priceJson);
             namedParameterJdbcTemplate.update(sql, param);

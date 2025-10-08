@@ -96,6 +96,8 @@
 package com.example.test0919.controller;
 
 import com.example.test0919.dto.CreateDataRequest;
+import com.example.test0919.dto.ProductGroup;
+import com.example.test0919.dto.ProductSlim;
 import com.example.test0919.error.NotFoundException;
 import com.example.test0919.model.AppUser;
 import com.example.test0919.model.Product;
@@ -136,6 +138,46 @@ public class ProductController {
         log.info("list_products count={}", productList.size());
         return ResponseEntity.ok(productList);
     }
+
+    @Operation(summary = "取得所有產品（依 name 分組）")
+    @GetMapping("/api/getDataGrouped")
+    public ResponseEntity<Map<String, List<ProductSlim>>> getDataGrouped() {
+        List<Product> list = productService.getData();
+
+        Map<String, List<ProductSlim>> grouped = list.stream()
+                .collect(java.util.stream.Collectors.groupingBy(
+                        Product::getName,                        // 依 name 分組
+                        java.util.LinkedHashMap::new,           // 保持出現順序（可選）
+                        java.util.stream.Collectors.mapping(    // 只取 id/price
+                                p -> new ProductSlim(p.getId(), p.getName(), p.getPrice()),
+                                java.util.stream.Collectors.toList()
+                        )
+                ));
+        return ResponseEntity.ok(grouped);
+    }
+
+    @Operation(summary = "取得所有產品（群組陣列版）")
+    @GetMapping("/api/getDataGrouped2")
+    public ResponseEntity<List<ProductGroup>> getDataGrouped2() {
+        List<Product> list = productService.getData();
+
+        Map<String, List<ProductSlim>> grouped = list.stream()
+                .collect(java.util.stream.Collectors.groupingBy(
+                        Product::getName,
+                        java.util.LinkedHashMap::new,
+                        java.util.stream.Collectors.mapping(
+                                p -> new ProductSlim(p.getId(),p.getName(), p.getPrice()),
+                                java.util.stream.Collectors.toList()
+                        )
+                ));
+
+        List<ProductGroup> result = grouped.entrySet().stream()
+                .map(e -> new ProductGroup(e.getKey(), e.getValue()))
+                .toList();
+
+        return ResponseEntity.ok(result);
+    }
+
 
     @Operation(
             summary = "依 ID 取得產品",
