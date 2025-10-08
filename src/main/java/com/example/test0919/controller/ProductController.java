@@ -133,10 +133,10 @@ public class ProductController {
 
     @Operation(summary = "取得所有產品")
     @GetMapping("/api/getData")
-    public ResponseEntity<List<Product>> getData() {
+    public ResponseEntity<Map<String, List<Product>>> getData() {
         List<Product> productList = productService.getData();
         log.info("list_products count={}", productList.size());
-        return ResponseEntity.ok(productList);
+        return ResponseEntity.ok(Map.of("Resource", productList));
     }
 
     @Operation(summary = "取得所有產品（依 name 分組）")
