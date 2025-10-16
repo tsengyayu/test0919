@@ -54,8 +54,8 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/createAppUser", "/api/**"))
-                .headers(h -> h.frameOptions(f -> f.disable()))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/profiles/**","/createAppUser", "/api/**"))
+//                .headers(h -> h.frameOptions(f -> f.disable()))
                 .httpBasic(withDefaults())
                 .authorizeHttpRequests(reg -> reg
                         .requestMatchers("/").permitAll()
@@ -63,12 +63,13 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/createAppUser").permitAll()
                         .requestMatchers("/createAppUser").permitAll() // 如需 GET 也放行就留這行
                         // 業務 API 規則
+                        .requestMatchers(HttpMethod.POST,    "/profiles/**").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.GET,    "/api/**").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.POST,   "/api/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,    "/api/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PATCH,  "/api/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
         return http.build();
     }

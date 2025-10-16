@@ -260,7 +260,6 @@ public class ProductController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Map<String, Object>> importJson(@RequestParam("file") MultipartFile file) {
         try {
-
             Map<String, Object> result = productService.batchInsert(file);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
